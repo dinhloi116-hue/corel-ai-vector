@@ -1,0 +1,28 @@
+{
+  "type":"object",
+  "properties":{
+    "version":{"type":"integer","enum":[1]},
+    "glyphs":{"type":"array","minItems":1,"items":{"type":"object","properties":{
+      "id":{"type":"string"},
+      "label":{"type":"string"},
+      "confidence":{"type":"number","minimum":0,"maximum":1},
+      "paths":{"type":"array","minItems":1,"items":{"type":"object","properties":{
+        "role":{"type":"string","enum":["outer","counter","decoration"]},
+        "closed":{"type":"boolean"},
+        "regions":{"type":"array","minItems":1,"items":{"type":"object","properties":{
+          "kind":{"type":"string","enum":["line","smooth_curve","sharp_corner"]},
+          "start":{"type":"array","minItems":2,"maxItems":2,"items":{"type":"number","minimum":0,"maximum":1}},
+          "end":{"type":"array","minItems":2,"maxItems":2,"items":{"type":"number","minimum":0,"maximum":1}},
+          "start_tangent_deg":{"type":"number"},
+          "end_tangent_deg":{"type":"number"},
+          "out_handle_ratio":{"type":"number","minimum":0.02,"maximum":0.8},
+          "in_handle_ratio":{"type":"number","minimum":0.02,"maximum":0.8},
+          "continuity_to_next":{"type":"string","enum":["none","g1","g2"]},
+          "allow_intermediate_anchor":{"type":"boolean"}
+        },"required":["kind","start","end","start_tangent_deg","end_tangent_deg","out_handle_ratio","in_handle_ratio","continuity_to_next","allow_intermediate_anchor"],"additionalProperties":false}}
+      },"required":["role","closed","regions"],"additionalProperties":false}}
+    },"required":["id","label","confidence","paths"],"additionalProperties":false}}
+  },
+  "required":["version","glyphs"],
+  "additionalProperties":false
+}
