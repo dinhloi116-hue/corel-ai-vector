@@ -1,0 +1,6 @@
+.worktrees/
+poc/local_vector/private-fixtures/*
+!poc/local_vector/private-fixtures/.gitkeep
+poc/local_vector/out/
+__pycache__/
+.pytest_cache/
